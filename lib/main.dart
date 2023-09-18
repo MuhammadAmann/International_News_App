@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:international_news_app/View/home.dart';
 import 'package:international_news_app/View/login_screen.dart';
 import 'package:international_news_app/View/splash_screnn.dart';
 
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login_Screen(),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: Splash_Screen(),
     );
   }
 }

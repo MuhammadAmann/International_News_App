@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:international_news_app/View/login_screen.dart';
 import 'package:international_news_app/View/signup_screen.dart';
 
-class Login_Screen extends StatefulWidget {
-  const Login_Screen({super.key});
+class Signup_Screen extends StatefulWidget {
+  const Signup_Screen({super.key});
 
   @override
-  State<Login_Screen> createState() => _Login_ScreenState();
+  State<Signup_Screen> createState() => _Signup_ScreenState();
 }
 
-class _Login_ScreenState extends State<Login_Screen> {
+class _Signup_ScreenState extends State<Signup_Screen> {
   bool toggle = true;
   final _formkey = GlobalKey<FormState>();
   @override
@@ -25,19 +26,48 @@ class _Login_ScreenState extends State<Login_Screen> {
               // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: hieght * .15),
+                SizedBox(height: hieght * .13),
                 Center(
                   child: Text(
-                    "Login here",
+                    "Create your account",
                     style: GoogleFonts.montserrat(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(height: hieght * .08),
+                SizedBox(height: hieght * .05),
                 Form(
                     key: _formkey,
                     child: Column(
                       children: [
+                        TextFormField(
+                          decoration: InputDecoration(
+                              labelText: "Full Name",
+                              prefixIcon: Icon(
+                                Icons.person_outline,
+                                size: 24,
+                                color: Colors.grey.shade600,
+                              ),
+                              border: OutlineInputBorder()
+                              // enabledBorder: OutlineInputBorder(
+                              //     borderSide: BorderSide(
+                              //         color: Colors.grey.shade300, width: 2),
+                              //     borderRadius: BorderRadius.circular(8)),
+                              // focusedBorder: OutlineInputBorder(
+                              //     borderSide: BorderSide(
+                              //         color: Colors.blue.shade300, width: 2),
+                              //     borderRadius: BorderRadius.circular(8))
+                              ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please enter full name";
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
+                        SizedBox(
+                          height: hieght * 0.04,
+                        ),
                         TextFormField(
                           decoration: InputDecoration(
                               labelText: "Email",
@@ -125,7 +155,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                         borderRadius: BorderRadius.circular(8)),
                     child: Center(
                         child: Text(
-                      "Login",
+                      "Create Account",
                       style: GoogleFonts.montserrat(color: Colors.white),
                     )),
                   ),
@@ -150,57 +180,12 @@ class _Login_ScreenState extends State<Login_Screen> {
                     )),
                   ],
                 ),
-                SizedBox(
-                  height: hieght * 0.04,
-                ),
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 50,
-                        padding: EdgeInsets.symmetric(vertical: 8),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey.shade200)),
-                        child: Center(
-                            child:
-                                Image(image: AssetImage("images/google.png"))),
-                      ),
-                    ),
-                    SizedBox(width: width * .04),
-                    Expanded(
-                      child: Container(
-                        height: 50,
-                        padding: EdgeInsets.symmetric(vertical: 8),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey.shade200)),
-                        child: Center(
-                            child: Image(
-                                image: AssetImage("images/facebook.png"))),
-                      ),
-                    ),
-                    SizedBox(width: width * .04),
-                    Expanded(
-                      child: Container(
-                        height: 50,
-                        padding: EdgeInsets.symmetric(vertical: 8),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey.shade200)),
-                        child: Center(
-                            child:
-                                Image(image: AssetImage("images/twitter.png"))),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: hieght * 0.06,
-                ),
+                SizedBox(height: hieght * .06),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account? ",
+                      "Already have an account? ",
                       style: GoogleFonts.montserrat(fontSize: 12),
                     ),
                     InkWell(
@@ -208,13 +193,15 @@ class _Login_ScreenState extends State<Login_Screen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Signup_Screen(),
+                              builder: (context) => Login_Screen(),
                             ));
                       },
                       child: Text(
-                        "Create Account",
+                        "Login",
                         style: GoogleFonts.montserrat(
-                            fontSize: 12, fontWeight: FontWeight.bold),
+                            color: Colors.blue,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
