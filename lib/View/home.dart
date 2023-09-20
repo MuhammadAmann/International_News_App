@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:international_news_app/View/News_Homepage.dart';
 import 'package:international_news_app/View/login_screen.dart';
 import 'package:international_news_app/View/signup_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -93,9 +94,8 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: hieght * .06),
             Center(
               child: AnimatedTextKit(
-                
                 animatedTexts: [
-                        ColorizeAnimatedText(  
+                  ColorizeAnimatedText(
                     'Continue as a guest',
                     textStyle:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
@@ -104,7 +104,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
                 isRepeatingAnimation: true,
                 onTap: () {
-                  print("Tap Event");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => News_Homepage(),
+                      ));
                 },
               ),
             ),
