@@ -3,31 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:international_news_app/View/Models/catagory_newsmodel.dart';
-import 'package:international_news_app/View/News_Homepage.dart';
-import 'package:international_news_app/repository/news_repo.dart';
 import 'package:international_news_app/view_model/News_viewModel.dart';
-import 'package:intl/intl.dart';
 
-class Catagories_News extends StatefulWidget {
-  const Catagories_News({super.key});
+class Saved_items extends StatefulWidget {
+  const Saved_items({super.key});
 
   @override
-  State<Catagories_News> createState() => _Catagories_NewsState();
+  State<Saved_items> createState() => _Saved_itemsState();
 }
 
-class _Catagories_NewsState extends State<Catagories_News> {
+class _Saved_itemsState extends State<Saved_items> {
   NewsViewModel newsViewModel = NewsViewModel();
-  final format = DateFormat('MMM dd, yyyy');
-  String CatagoryName = "General";
-
-  List<String> CatagoriesList = [
-    "General",
-    "Enterainment",
-    "Health",
-    "Business",
-    "Technology",
-    "Sports"
-  ];
+  String CatagoryName = "Sports";
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +24,7 @@ class _Catagories_NewsState extends State<Catagories_News> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "News Catagories",
+            "Saved News",
             style: GoogleFonts.montserrat(
                 color: Colors.blue.shade700, fontWeight: FontWeight.bold),
           ),
@@ -52,6 +39,16 @@ class _Catagories_NewsState extends State<Catagories_News> {
               color: Colors.blue.shade700,
             ),
           ),
+          actions: [
+            Icon(
+              Icons.bookmark,
+              size: 28,
+              color: Colors.blue.shade700,
+            ),
+            const SizedBox(
+              width: 4,
+            )
+          ],
           backgroundColor: Colors.transparent,
         ),
         body: Padding(
@@ -61,46 +58,6 @@ class _Catagories_NewsState extends State<Catagories_News> {
               SizedBox(
                 height: hieght * .01,
               ),
-              SizedBox(
-                height: 50,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: CatagoriesList.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        CatagoryName = CatagoriesList[index];
-                        setState(() {});
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 07),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: CatagoryName == CatagoriesList[index]
-                                  ? Border.all(color: Colors.transparent)
-                                  : Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(20),
-                              color: CatagoryName == CatagoriesList[index]
-                                  ? Colors.blue.shade700
-                                  : Colors.transparent),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Center(
-                                child: Text(
-                              CatagoriesList[index].toString(),
-                              style: GoogleFonts.montserrat(
-                                  color: CatagoryName == CatagoriesList[index]
-                                      ? Colors.white
-                                      : Colors.black),
-                            )),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              SizedBox(height: hieght * .02),
               Expanded(
                 child: FutureBuilder<CatagoryNewsModel>(
                   future: newsViewModel.fetchCatagoryNewsAPi(CatagoryName),
@@ -111,9 +68,6 @@ class _Catagories_NewsState extends State<Catagories_News> {
                       return ListView.builder(
                         itemCount: snapshot.data!.articles!.length,
                         itemBuilder: (context, index) {
-                          DateTime dateTime = DateTime.parse(snapshot
-                              .data!.articles![index].publishedAt
-                              .toString());
                           return Padding(
                             padding: const EdgeInsets.only(top: 8),
                             child: Container(
@@ -121,8 +75,8 @@ class _Catagories_NewsState extends State<Catagories_News> {
                                   color: Colors.white,
                                   border: Border.all(
                                       color: Colors.black.withOpacity(.05)),
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(12))),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(12))),
                               child: Row(
                                 children: [
                                   ClipRRect(
@@ -172,12 +126,7 @@ class _Catagories_NewsState extends State<Catagories_News> {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
-                                              Text(
-                                                format.format(dateTime),
-                                                style: GoogleFonts.montserrat(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.blue),
-                                              ),
+                                              const Icon(Icons.bookmark)
                                             ],
                                           )
                                         ],

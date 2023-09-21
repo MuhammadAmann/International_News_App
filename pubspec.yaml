@@ -40,6 +40,7 @@ dependencies:
   intl: ^0.17.0
   cached_network_image:
   animated_text_kit: ^4.2.2
+  persistent_bottom_nav_bar:
 
 dev_dependencies:
   flutter_test:

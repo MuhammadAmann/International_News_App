@@ -15,7 +15,7 @@ class newsrespository {
       final body = jsonDecode(response.body);
       return NewsChanelHeadlinesModel.fromJson(body);
     }
-    throw Exception("Error");
+throw Exception("Failed to fetch data: ${response.statusCode}");
   }
 
   Future<CatagoryNewsModel> fetchCatagoryNewsAPi(String Catagory) async {
@@ -26,6 +26,6 @@ class newsrespository {
       final body = jsonDecode(response.body);
       return CatagoryNewsModel.fromJson(body);
     }
-    throw Exception("Error");
+throw Exception("Failed to fetch data: ${response.statusCode}");
   }
 }

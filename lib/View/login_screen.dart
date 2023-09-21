@@ -46,7 +46,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                 size: 24,
                                 color: Colors.grey.shade600,
                               ),
-                              border: OutlineInputBorder()
+                              border: const OutlineInputBorder()
                               // enabledBorder: OutlineInputBorder(
                               //     borderSide: BorderSide(
                               //         color: Colors.grey.shade300, width: 2),
@@ -91,7 +91,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                           Icons.visibility_off_outlined,
                                           color: Colors.grey.shade600,
                                         )),
-                              border: OutlineInputBorder()
+                              border: const OutlineInputBorder()
                               // enabledBorder: OutlineInputBorder(
                               //     borderSide: BorderSide(
                               //         color: Colors.grey.shade300, width: 2),
@@ -142,7 +142,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                         color: Colors.grey.shade300,
                       ),
                     ),
-                    Text("  or  "),
+                    const Text("  or  "),
                     Expanded(
                         child: Container(
                       height: 1,
@@ -159,10 +159,10 @@ class _Login_ScreenState extends State<Login_Screen> {
                     Expanded(
                       child: Container(
                         height: 50,
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade200)),
-                        child: Center(
+                        child: const Center(
                             child:
                                 Image(image: AssetImage("images/google.png"))),
                       ),
@@ -171,10 +171,10 @@ class _Login_ScreenState extends State<Login_Screen> {
                     Expanded(
                       child: Container(
                         height: 50,
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade200)),
-                        child: Center(
+                        child: const Center(
                             child: Image(
                                 image: AssetImage("images/facebook.png"))),
                       ),
@@ -183,10 +183,10 @@ class _Login_ScreenState extends State<Login_Screen> {
                     Expanded(
                       child: Container(
                         height: 50,
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade200)),
-                        child: Center(
+                        child: const Center(
                             child:
                                 Image(image: AssetImage("images/twitter.png"))),
                       ),
@@ -208,7 +208,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Signup_Screen(),
+                              builder: (context) => const Signup_Screen(),
                             ));
                       },
                       child: Text(

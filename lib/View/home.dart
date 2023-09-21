@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:international_news_app/View/News_Homepage.dart';
+import 'package:international_news_app/View/Mywidgets/nav_bar.dart';
 import 'package:international_news_app/View/login_screen.dart';
 import 'package:international_news_app/View/signup_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
+            const Center(
               child: Icon(
                 Icons.newspaper,
                 color: Colors.white,
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Login_Screen()));
+                            builder: (context) => const Login_Screen()));
                   },
                   child: Container(
                     height: 60,
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Signup_Screen(),
+                          builder: (context) => const Signup_Screen(),
                         ));
                   },
                   child: Container(
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ColorizeAnimatedText(
                     'Continue as a guest',
                     textStyle:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                        const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                     colors: colorizeColors,
                   ),
                 ],
@@ -107,19 +107,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => News_Homepage(),
+                        builder: (context) => const Bottom_Nav_Bar(),
                       ));
                 },
               ),
             ),
-
-            // Text(
-            //   "Continue as a guest ",
-            //   style: GoogleFonts.montserrat(
-            //       color: Colors.white,
-            //       fontSize: 14,
-            //       fontWeight: FontWeight.w400),
-            // ),
           ],
         ),
       ),

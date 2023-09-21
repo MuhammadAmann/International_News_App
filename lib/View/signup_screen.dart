@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:international_news_app/View/login_screen.dart';
-import 'package:international_news_app/View/signup_screen.dart';
 
 class Signup_Screen extends StatefulWidget {
   const Signup_Screen({super.key});
@@ -47,15 +46,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                 size: 24,
                                 color: Colors.grey.shade600,
                               ),
-                              border: OutlineInputBorder()
-                              // enabledBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.grey.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8)),
-                              // focusedBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.blue.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8))
+                              border: const OutlineInputBorder()
                               ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -76,7 +67,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                 size: 24,
                                 color: Colors.grey.shade600,
                               ),
-                              border: OutlineInputBorder()
+                              border: const OutlineInputBorder()
                               // enabledBorder: OutlineInputBorder(
                               //     borderSide: BorderSide(
                               //         color: Colors.grey.shade300, width: 2),
@@ -121,7 +112,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                           Icons.visibility_off_outlined,
                                           color: Colors.grey.shade600,
                                         )),
-                              border: OutlineInputBorder()
+                              border: const OutlineInputBorder()
                               // enabledBorder: OutlineInputBorder(
                               //     borderSide: BorderSide(
                               //         color: Colors.grey.shade300, width: 2),
@@ -172,7 +163,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                         color: Colors.grey.shade300,
                       ),
                     ),
-                    Text("  or  "),
+                    const Text("  or  "),
                     Expanded(
                         child: Container(
                       height: 1,
@@ -193,7 +184,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Login_Screen(),
+                              builder: (context) => const Login_Screen(),
                             ));
                       },
                       child: Text(
