@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:international_news_app/View/DetailScreen.dart';
 import 'package:international_news_app/View/Models/catagory_newsmodel.dart';
 import 'package:international_news_app/View/Models/news_chanel_headlines_model.dart';
-import 'package:international_news_app/View/nav_bar.dart';
 import 'package:international_news_app/View/catagories_naws.dart';
 import 'package:international_news_app/view_model/News_viewModel.dart';
 import 'package:intl/intl.dart';

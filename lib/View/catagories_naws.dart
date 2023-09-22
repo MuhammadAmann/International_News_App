@@ -4,8 +4,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:international_news_app/View/DetailScreen.dart';
 import 'package:international_news_app/View/Models/catagory_newsmodel.dart';
-import 'package:international_news_app/View/News_Homepage.dart';
-import 'package:international_news_app/repository/news_repo.dart';
 import 'package:international_news_app/view_model/News_viewModel.dart';
 import 'package:intl/intl.dart';
 
