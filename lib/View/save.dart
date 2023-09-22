@@ -30,25 +30,6 @@ class _Saved_itemsState extends State<Saved_items> {
           ),
           centerTitle: true,
           elevation: 0,
-          leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back,
-              color: Colors.blue.shade700,
-            ),
-          ),
-          actions: [
-            Icon(
-              Icons.bookmark,
-              size: 28,
-              color: Colors.blue.shade700,
-            ),
-            const SizedBox(
-              width: 4,
-            )
-          ],
           backgroundColor: Colors.transparent,
         ),
         body: Padding(

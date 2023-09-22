@@ -127,7 +127,7 @@ class _User_ProfileState extends State<User_Profile> {
                     icondata: Icon(Icons.logout_outlined,
                         color: Colors.black.withOpacity(.6))),
                 SizedBox(
-                  height: hieght * .02,
+                  height: hieght * .06,
                 ),
               ],
             ),

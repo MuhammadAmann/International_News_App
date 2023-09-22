@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:international_news_app/View/DetailScreen.dart';
 import 'package:international_news_app/View/Models/catagory_newsmodel.dart';
 import 'package:international_news_app/View/News_Homepage.dart';
 import 'package:international_news_app/repository/news_repo.dart';
@@ -114,77 +115,101 @@ class _Catagories_NewsState extends State<Catagories_News> {
                           DateTime dateTime = DateTime.parse(snapshot
                               .data!.articles![index].publishedAt
                               .toString());
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 8),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      color: Colors.black.withOpacity(.05)),
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(12))),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(12),
-                                    child: CachedNetworkImage(
-                                      imageUrl: snapshot
-                                          .data!.articles![index].urlToImage
-                                          .toString(),
-                                      fit: BoxFit.cover,
-                                      height: hieght * .18,
-                                      width: width * .25,
-                                      placeholder: (context, url) => Container(
-                                        child: Spinkit2,
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DetailScreen(
+                                          DateTime: format.format(dateTime),
+                                          image: snapshot
+                                              .data!.articles![index].urlToImage
+                                              .toString(),
+                                          author: snapshot
+                                              .data!.articles![index].author
+                                              .toString(),
+                                          newschanel: snapshot.data!
+                                              .articles![index].source!.name
+                                              .toString(),
+                                          title: snapshot
+                                              .data!.articles![index].title
+                                              .toString(),
+                                          description: snapshot
+                                              .data!.articles![index].content
+                                              .toString())));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(
+                                        color: Colors.black.withOpacity(.05)),
+                                    borderRadius:
+                                        const BorderRadius.all(Radius.circular(12))),
+                                child: Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: CachedNetworkImage(
+                                        imageUrl: snapshot
+                                            .data!.articles![index].urlToImage
+                                            .toString(),
+                                        fit: BoxFit.cover,
+                                        height: hieght * .18,
+                                        width: width * .25,
+                                        placeholder: (context, url) => Container(
+                                          child: Spinkit2,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      padding: const EdgeInsets.all(6),
-                                      height: hieght * .18,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            snapshot
-                                                .data!.articles![index].title
-                                                .toString(),
-                                            style: GoogleFonts.montserrat(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600),
-                                            maxLines: 3,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          const Spacer(),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                snapshot.data!.articles![index]
-                                                    .source!.name
-                                                    .toString(),
-                                                style: GoogleFonts.montserrat(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Text(
-                                                format.format(dateTime),
-                                                style: GoogleFonts.montserrat(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.blue),
-                                              ),
-                                            ],
-                                          )
-                                        ],
+                                    Expanded(
+                                      child: Container(
+                                        padding: const EdgeInsets.all(6),
+                                        height: hieght * .18,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              snapshot
+                                                  .data!.articles![index].title
+                                                  .toString(),
+                                              style: GoogleFonts.montserrat(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600),
+                                              maxLines: 3,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            const Spacer(),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  snapshot.data!.articles![index]
+                                                      .source!.name
+                                                      .toString(),
+                                                  style: GoogleFonts.montserrat(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  format.format(dateTime),
+                                                  style: GoogleFonts.montserrat(
+                                                      fontWeight: FontWeight.w600,
+                                                      color: Colors.blue),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           );

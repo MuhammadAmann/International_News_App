@@ -27,11 +27,13 @@ class _Bottom_Nav_BarState extends State<Bottom_Nav_Bar> {
           icon: const Icon(Icons.home),
           inactiveIcon: const Icon(Icons.home_outlined, color: Colors.black54)),
       PersistentBottomNavBarItem(
-          icon: const Icon(Icons.save),
-          inactiveIcon: const Icon(Icons.save_outlined, color: Colors.black54)),
+          icon: const Icon(Icons.bookmark),
+          inactiveIcon: const Icon(Icons.bookmark_border_outlined,
+              color: Colors.black54)),
       PersistentBottomNavBarItem(
           icon: const Icon(Icons.person),
-          inactiveIcon: const Icon(Icons.person_outline, color: Colors.black54)),
+          inactiveIcon:
+              const Icon(Icons.person_outline, color: Colors.black54)),
     ];
   }
 
