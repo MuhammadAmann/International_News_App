@@ -12,6 +12,20 @@ class Signup_Screen extends StatefulWidget {
 class _Signup_ScreenState extends State<Signup_Screen> {
   bool toggle = true;
   final _formkey = GlobalKey<FormState>();
+
+  @override
+    TextEditingController namecontroller = TextEditingController();
+    TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    namecontroller.dispose();
+    emailcontroller.dispose();
+    passwordcontroller.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     final hieght = MediaQuery.sizeOf(context).height * 1;
@@ -22,7 +36,6 @@ class _Signup_ScreenState extends State<Signup_Screen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: hieght * .13),
@@ -39,6 +52,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                     child: Column(
                       children: [
                         TextFormField(
+                          controller: namecontroller,
                           decoration: InputDecoration(
                               labelText: "Full Name",
                               prefixIcon: Icon(
@@ -46,8 +60,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                 size: 24,
                                 color: Colors.grey.shade600,
                               ),
-                              border: const OutlineInputBorder()
-                              ),
+                              border: const OutlineInputBorder()),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please enter full name";
@@ -60,6 +73,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                           height: hieght * 0.04,
                         ),
                         TextFormField(
+                          controller: emailcontroller,
                           decoration: InputDecoration(
                               labelText: "Email",
                               prefixIcon: Icon(
@@ -68,15 +82,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                 color: Colors.grey.shade600,
                               ),
                               border: const OutlineInputBorder()
-                              // enabledBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.grey.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8)),
-                              // focusedBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.blue.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8))
-                              ),
+                               ),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please enter email";
@@ -89,6 +95,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                           height: hieght * 0.04,
                         ),
                         TextFormField(
+                          controller: passwordcontroller,
                           obscureText: toggle,
                           decoration: InputDecoration(
                               labelText: "Password",
@@ -113,14 +120,6 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                           color: Colors.grey.shade600,
                                         )),
                               border: const OutlineInputBorder()
-                              // enabledBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.grey.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8)),
-                              // focusedBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.blue.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8))
                               ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -137,7 +136,16 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                 ),
                 InkWell(
                   onTap: () {
-                    if (_formkey.currentState!.validate()) ;
+                    if (_formkey.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Login_Screen()));
+                    } else {
+                      return null;
+                    }
+
+ 
                   },
                   child: Container(
                     height: 50,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:international_news_app/View/News_Homepage.dart';
+import 'package:international_news_app/View/nav_bar.dart';
 import 'package:international_news_app/View/signup_screen.dart';
 
 class Login_Screen extends StatefulWidget {
@@ -12,6 +14,17 @@ class Login_Screen extends StatefulWidget {
 class _Login_ScreenState extends State<Login_Screen> {
   bool toggle = true;
   final _formkey = GlobalKey<FormState>();
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emailcontroller.dispose();
+    passwordcontroller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final hieght = MediaQuery.sizeOf(context).height * 1;
@@ -22,7 +35,6 @@ class _Login_ScreenState extends State<Login_Screen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: hieght * .15),
@@ -39,6 +51,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                     child: Column(
                       children: [
                         TextFormField(
+                          controller: emailcontroller,
                           decoration: InputDecoration(
                               labelText: "Email",
                               prefixIcon: Icon(
@@ -46,16 +59,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                 size: 24,
                                 color: Colors.grey.shade600,
                               ),
-                              border: const OutlineInputBorder()
-                              // enabledBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.grey.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8)),
-                              // focusedBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.blue.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8))
-                              ),
+                              border: const OutlineInputBorder()),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please enter email";
@@ -68,6 +72,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                           height: hieght * 0.04,
                         ),
                         TextFormField(
+                          controller: passwordcontroller,
                           obscureText: toggle,
                           decoration: InputDecoration(
                               labelText: "Password",
@@ -91,16 +96,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                           Icons.visibility_off_outlined,
                                           color: Colors.grey.shade600,
                                         )),
-                              border: const OutlineInputBorder()
-                              // enabledBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.grey.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8)),
-                              // focusedBorder: OutlineInputBorder(
-                              //     borderSide: BorderSide(
-                              //         color: Colors.blue.shade300, width: 2),
-                              //     borderRadius: BorderRadius.circular(8))
-                              ),
+                              border: const OutlineInputBorder()),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please enter password";
@@ -116,7 +112,14 @@ class _Login_ScreenState extends State<Login_Screen> {
                 ),
                 InkWell(
                   onTap: () {
-                    if (_formkey.currentState!.validate()) ;
+                    if (_formkey.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Bottom_Nav_Bar()));
+                    } else {
+                      return null;
+                    }
                   },
                   child: Container(
                     height: 50,

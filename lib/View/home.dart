@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:international_news_app/View/News_Homepage.dart';
 import 'package:international_news_app/View/nav_bar.dart';
 import 'package:international_news_app/View/login_screen.dart';
 import 'package:international_news_app/View/signup_screen.dart';
@@ -107,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Bottom_Nav_Bar(),
+                        builder: (context) => const News_Homepage(),
                       ));
                 },
               ),

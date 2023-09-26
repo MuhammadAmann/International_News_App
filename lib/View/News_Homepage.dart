@@ -171,6 +171,7 @@ class _News_HomepageState extends State<News_Homepage> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(12),
                                     child: CachedNetworkImage(
+                                      height: hieght * .26,
                                       imageUrl: snapshot
                                           .data!.articles![index].urlToImage
                                           .toString(),
@@ -366,7 +367,6 @@ class _News_HomepageState extends State<News_Homepage> {
                                           ),
                                         ),
                                       ),
-
                                       SizedBox(
                                         height: hieght * .01,
                                       ),
@@ -380,33 +380,6 @@ class _News_HomepageState extends State<News_Homepage> {
                                               color: Colors.blue),
                                         ),
                                       ),
-                                      // Padding(
-                                      //   padding: const EdgeInsets.symmetric(
-                                      //       horizontal: 10),
-                                      //   child: SizedBox(
-                                      //     height: hieght * .03,
-                                      //     width: width * .8,
-                                      //     child: Row(
-                                      //       mainAxisAlignment:
-                                      //           MainAxisAlignment.spaceBetween,
-                                      //       children: [
-                                      //         // Text(
-                                      //         //   snapshot.data!.articles![index]
-                                      //         //       .source!.name
-                                      //         //       .toString(),
-                                      //         //   style: GoogleFonts.montserrat(
-                                      //         //       fontWeight: FontWeight.bold),
-                                      //         // ),
-                                      //         Text(
-                                      //           format.format(dateTime),
-                                      //           style: GoogleFonts.montserrat(
-                                      //               fontWeight: FontWeight.w600,
-                                      //               color: Colors.blue),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //   ),
-                                      // ),
                                     ],
                                   )
                                 ],
